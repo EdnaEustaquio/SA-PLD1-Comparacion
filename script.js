@@ -20,7 +20,7 @@ function calcular (){
     let mayor;
     let medio;
     let menor;
-    for (let i =0; i <= lista[2]; i++){
+    for (let i =0; i <= lista.length-1 ; i++){
         if (lista[i]>lista[i+1]){
             if(lista[i]>lista[i+2]){
                 mayor = lista[i];
