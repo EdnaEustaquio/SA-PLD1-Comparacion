@@ -1,41 +1,38 @@
-
 let lista = [];
-let lista2 = [];
 
-function crearLista (){
-
+function crearLista() {
     let numero = document.getElementById("numeroIngresado").value;
-    if (numero == "")
-    { alert("Por favor, inserte un numero.")}
-    else{
+    if (numero === "") {
+        alert("Por favor, inserte un número.");
+    } else {
         numero = parseInt(numero);
-        let numero2 = numero;
         lista.push(numero);
-        lista2.push(numero);
-    }}
+        document.getElementById("numeroIngresado").value = "";
 
-function calcular (){
-    //duplic
-    lista=lista.concat(lista2);
-    let mayor;
-    let medio;
-    let menor;
-    for (let i =0; i <= lista.length-1 ; i++){
-        if (lista[i]>lista[i+1]){
-            if(lista[i]>lista[i+2]){
-                mayor = lista[i];
-            }
-            else { medio = lista[i];}
+        if (lista.length === 3) {
+            calcular();
         }
-        else{
-            if(lista[i]> lista[i+2]){
-                medio = lista[i];
-            }
-            else {
-                menor = lista[i];
-            }
-        
-        }
-
     }
 }
+
+function calcular() {
+    if (lista.length !== 3) {
+        alert("Debe ingresar exactamente 3 números.");
+        return;
+    }
+
+    // Ordenamos la lista
+    let listaOrdenada = [...lista].sort((a, b) => a - b);
+
+    let menor = listaOrdenada[0];
+    let medio = listaOrdenada[1];
+    let mayor = listaOrdenada[2];
+
+    console.log("Número menor: " + menor);
+    console.log("Número medio: " + medio);
+    console.log("Número mayor: " + mayor);
+
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `Los numeros ordenados de mayor a menor son: ${mayor}, ${medio}, ${menor}`;
+}
+
